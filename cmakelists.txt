@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.15)
+
+project(msdfgen_c)
+
+file(GLOB C_SOURCES
+  stub.cpp
+)
+
+add_library(msdfgen_c STATIC ${C_SOURCES})
+
+set_property(TARGET msdfgen_c PROPERTY
+  MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")

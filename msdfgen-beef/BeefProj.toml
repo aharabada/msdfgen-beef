@@ -1,0 +1,12 @@
+FileVersion = 1
+Dependencies = {corlib = "*", FreeType = "*"}
+
+[Project]
+Name = "msdfgen-beef"
+DefaultNamespace = "msdfgen"
+
+[Configs.Debug.Win64]
+LibPaths = ["$(ProjectDir)/dist/Debug-$(Platform)/*.lib"]
+
+[Configs.Release.Win64]
+LibPaths = ["$(ProjectDir)/dist/Release-$(Platform)/msdfgen.lib"]
