@@ -15,7 +15,7 @@ namespace msdfgen
 #endif
 
 		[CLink]
-		private static extern void msdfgen_loadGlyph(Shape *output, FT_Face *font, uint32 glyphIndex, double *advance);
+		private static extern bool msdfgen_loadGlyph(Shape *output, FT_Face *font, uint32 glyphIndex, double *advance);
 		
 		[CLink]
 		private static extern void msdfgen_generateMSDF([MangleConst] Bitmap<float, const 3> *output, [MangleConst] Shape *shape, [MangleConst] Projection *projection, double range, [MangleConst] MSDFGeneratorConfig *config);
@@ -29,13 +29,13 @@ namespace msdfgen
 		[CLink]
 		private static extern void msdfgen_edgeColoringSimple(Shape* shape, double angleThreshold, uint64 seed);
 		
-		public static void LoadGlyph(out Shape shape, in FT_Face font, uint32 glyphIndex, out double advance)
+		public static bool LoadGlyph(out Shape shape, ref FT_Face font, uint32 glyphIndex, out double advance)
 		{
 			shape = ?;
 			advance = ?;
 
 #unwarn
-			msdfgen_loadGlyph(&shape, &font, glyphIndex, &advance);
+			return msdfgen_loadGlyph(&shape, &font, glyphIndex, &advance);
 		}
 
 		public static void GenerateMSDF(in Bitmap<float, const 3> output, in Shape shape, in Projection projection, double range, in MSDFGeneratorConfig config)

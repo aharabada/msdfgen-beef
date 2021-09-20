@@ -10,6 +10,7 @@
 
 #include "msdfgen/msdfgen.h"
 #include "msdfgen/msdfgen-ext.h"
+#include "msdfgen/core/ShapeDistanceFinder.h"
 
 using namespace msdfgen;
 
@@ -17,7 +18,7 @@ EXTERN void msdfgen_generateSDF(const BitmapRef<float, 1> *output, const Shape *
 
 EXTERN void msdfgen_generateMSDF(const BitmapRef<float, 3> *output, const Shape *shape, const Projection *projection, double range, const MSDFGeneratorConfig *config);
 
-EXTERN void msdfgen_loadGlyph(Shape *output, FontHandle *font, GlyphIndex glyphIndex, double *advance);
+EXTERN bool msdfgen_loadGlyph(Shape *output, FontHandle *font, GlyphIndex glyphIndex, double *advance);
 
 EXTERN const size_t msdfgen_SizeOfShape = sizeof(Shape);
 
@@ -26,3 +27,7 @@ EXTERN void msdfgen_edgeColoringSimple(Shape *shape, double angleThreshold, unsi
 EXTERN void msdfgen_shape_normalize(Shape *shape);
 
 EXTERN Shape::Bounds msdfgen_shape_getBounds(Shape *shape);
+
+EXTERN bool msdfgen_shape_validate(Shape* shape);
+
+EXTERN bool msdfgen_shape_reverseIfNeeded(Shape* shape, Shape::Bounds* bounds);

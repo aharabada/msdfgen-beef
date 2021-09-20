@@ -21,6 +21,16 @@ namespace msdfgen
 			msdfgen_shape_normalize(&this);
 		}
 
+		public bool Validate() mut
+		{
+			return msdfgen_shape_validate(&this);
+		}
+
+		public bool ReverseIfNeeded(in Bounds bounds) mut
+		{
+			return msdfgen_shape_reverseIfNeeded(&this, &bounds);
+		}
+
 		public Bounds GetBounds() mut => msdfgen_shape_getBounds(&this);
 		
 		[CLink]
@@ -28,5 +38,11 @@ namespace msdfgen
 
 		[CLink]
 		private static extern Bounds msdfgen_shape_getBounds(Shape *shape);
+
+		[CLink]
+		private static extern bool msdfgen_shape_validate(Shape *shape);
+		
+		[CLink]
+		private static extern bool msdfgen_shape_reverseIfNeeded(Shape *shape, Bounds *bounds);
 	}
 }
