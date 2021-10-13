@@ -1,6 +1,8 @@
+using System;
+
 namespace msdfgen
 {
-	public struct Bitmap<T, N> where N : const int
+	public struct Bitmap<T, N> : IDisposable where N : const int
 	{
 		public T* Pixels;
 		public int32 Width, Height;
@@ -13,6 +15,11 @@ namespace msdfgen
 			Height = height;
 
 			Pixels = new T[N * Width * Height]*;
+		}
+
+		public void Dispose()
+		{
+			delete (void*)Pixels;
 		}
 	}
 }
