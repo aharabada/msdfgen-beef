@@ -2,5 +2,6 @@ BeefSpace_User.toml
 
 build/
 recovery/
+msdfgen-beef/dist
 
 .vscode/
