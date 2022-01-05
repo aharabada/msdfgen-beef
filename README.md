@@ -7,10 +7,8 @@ Before you can get started you probably have to compile Skia and MSDFGen and the
 2. Modify buildskia.ps1 as needed
 3. Run `./buildskia.ps1` (Pulls and compiles skia)
 4. Modify the msdfgen project as needed
-5. Run `./build_and_copy.ps1 build all` (Compiles)
-6. Run `./build_c.ps1 build all`
-
-Note when building msdfgen:
+5. Run `./build_msdfgen.ps1 build all` (Compiles msdfgen)
+6. Run `./build_c.ps1 build all` (Compiles the c-wrapper)
 
 ## Prepare SKIA:
 Depending on your system you might need to modify buildskia.ps1 in order to correctly compile it.
@@ -21,5 +19,9 @@ Depending on your system you might need to modify buildskia.ps1 in order to corr
 
 ## Prepare MSDFGen:
 You might have to edit the msdfgen-Project before building it.
-- MSDFGen uses an older version of skia. Because of this you have to add the "skia"-Folder to the include directories
+- The Visual Studio Project is quite old, you might want to Upgrade it (`devenv /Upgrade .\msdfgen\Msdfgen.sln`)
+- MSDFGen uses an older version of skia. Because of this you have to add the "skia"-Folder to the include directories in the project settings under "C/C++->General->Additional include directories"
 - You might want to change the project settings "C/C++->General->Debug Information Format" to "Program Database (/Zi)" to prevent getting a warning when building the beef project
+
+## Prepare the Wrapper:
+If you want to expose more functions simply add them to stub.h and stub.cpp (and the beef library of course) and rerun `./build_c.ps1 build all`
