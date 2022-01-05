@@ -51,3 +51,13 @@ bool msdfgen_shape_reverseIfNeeded(Shape* shape, Shape::Bounds* bounds)
 
     return false;
 }
+
+void msdfgen_shape_orientContours(Shape* shape)
+{
+    shape->orientContours();
+}
+
+bool msdfgen_resolveShapeGeometry(Shape* shape)
+{
+    return msdfgen::resolveShapeGeometry(*shape);
+}

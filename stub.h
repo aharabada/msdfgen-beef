@@ -2,6 +2,8 @@
 
 // Stub to build a c library for msdfgen
 
+#define MSDFGEN_USE_SKIA
+
 #if defined __cplusplus
     #define EXTERN extern "C"
 #else
@@ -31,3 +33,7 @@ EXTERN Shape::Bounds msdfgen_shape_getBounds(Shape *shape);
 EXTERN bool msdfgen_shape_validate(Shape* shape);
 
 EXTERN bool msdfgen_shape_reverseIfNeeded(Shape* shape, Shape::Bounds* bounds);
+
+EXTERN void msdfgen_shape_orientContours(Shape* shape);
+
+EXTERN bool msdfgen_resolveShapeGeometry(Shape* shape);

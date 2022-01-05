@@ -29,6 +29,9 @@ namespace msdfgen
 		[CLink]
 		private static extern void msdfgen_edgeColoringSimple(Shape* shape, double angleThreshold, uint64 seed);
 		
+		[CLink]
+		private static extern bool msdfgen_resolveShapeGeometry(Shape* shape);
+
 		public static bool LoadGlyph(out Shape shape, ref FT_Face font, uint32 glyphIndex, out double advance)
 		{
 			shape = ?;
@@ -48,6 +51,12 @@ namespace msdfgen
 		{
 #unwarn
 			msdfgen_edgeColoringSimple(&shape, angleThreshold, seed);
+		}
+
+		public static bool ResolveShapeGeometry(in Shape shape)
+		{
+#unwarn
+			return msdfgen_resolveShapeGeometry(&shape);
 		}
 	}
 }
