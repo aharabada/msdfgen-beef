@@ -28,6 +28,7 @@ namespace msdfgen
 
 		public bool ReverseIfNeeded(in Bounds bounds) mut
 		{
+#unwarn
 			return msdfgen_shape_reverseIfNeeded(&this, &bounds);
 		}
 
