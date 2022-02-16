@@ -9,4 +9,4 @@ DefaultNamespace = "msdfgen"
 LibPaths = ["$(ProjectDir)/dist/Debug-$(Platform)/*.lib"]
 
 [Configs.Release.Win64]
-LibPaths = ["$(ProjectDir)/dist/Release-$(Platform)/msdfgen.lib"]
+LibPaths = ["$(ProjectDir)/dist/Release-$(Platform)/msdfgen.lib", "$(ProjectDir)/dist/Release-$(Platform)/msdfgen_c.lib", "$(ProjectDir)/dist/Release-$(Platform)/skia.lib"]
